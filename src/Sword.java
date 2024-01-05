@@ -1,2 +1,10 @@
-package PACKAGE_NAME;public class Sword {
+public class Sword {
+    private String currentSword;
+    private int damage;
+    private int doudge;
+
+    public Sword() {
+        currentSword =
+    }
+    public
 }
