@@ -8,7 +8,7 @@ public class Dragon {
     }
 
     public void setDragonLevel() {
-        int lev = (int) (Math.random() * 2) + 1;
+        int lev = (int) (Math.random() * 3) + 1;
         if (lev == 3) {
             level = 3;
         } else if (lev == 2) {
@@ -28,5 +28,29 @@ public class Dragon {
         }
         return damage;
     }
+
+    public void dragonHealth(int damage) {
+        health -= damage;
+    }
+
+    public String isDead() {
+        if (health == 0) {
+            int outcome = (int) (Math.random() * 4) + 1;
+            if (outcome == 1) {
+                if (level == 3) {
+                    return "You got 50 gold!";
+                } else if (level == 2) {
+                    return "You got 25 gold!";
+                } else {
+                    return "You got 10 gold!";
+                }
+            } else if (outcome == 2) {
+                Sword.updateSword();
+                return "Your sword was upgraded!";
+            }
+        }
+    }
+
+
 
 }

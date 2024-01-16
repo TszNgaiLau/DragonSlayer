@@ -8,7 +8,7 @@ public class Sword {
         damage = 10;
         dodge = 1;
     }
-    public void updateSword() {
+    public static void updateSword() {
         damage += 5;
         dodge += 1;
     }

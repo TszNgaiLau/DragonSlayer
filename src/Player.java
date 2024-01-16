@@ -36,6 +36,21 @@ public class Player {
         }
     }
 
+    public String useHealthPot() {
+        if (healthPot) {
+            healthPot = false;
+            health = 100;
+            return "You have used the health pot";
+        }
+        return "You do not have a health pot";
+
+    }
+
+    public String playerInfo() {
+        return "Health: " + health + "\nSword|Damage: " + sword.getDamage() + "|Dodge: " + sword.getDodge() + "|";
+    }
+
+
 
 
 
