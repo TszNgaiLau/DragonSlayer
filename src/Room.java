@@ -2,6 +2,7 @@ public class Room {
     private String[] room;
 
     private boolean searched;
+    private boolean healthPotPresent;
     private int dragonLeft;
     public Room() {
         room = new String[]{"Entrance", "Hall", "Storage", "Dungeons", "Throne"};
@@ -13,6 +14,7 @@ public class Room {
         return searched;
     }
     public boolean setSearched() {
+
 
     }
 }

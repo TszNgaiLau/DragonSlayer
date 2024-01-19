@@ -15,6 +15,9 @@ public class Player {
         sword = new Sword();
         dragon = new Dragon();
     }
+    public Sword getSword() {
+        return sword;
+    }
 
     public int attack() {
         int crit = (int) (Math.random() * 3) + 1;

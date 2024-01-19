@@ -1,14 +1,12 @@
 public class Sword {
-    private String Sword;
     private int damage;
     private int dodge;
 
     public Sword() {
-        Sword = "Sword";
         damage = 10;
         dodge = 1;
     }
-    public static void updateSword() {
+    public void updateSword() {
         damage += 5;
         dodge += 1;
     }
