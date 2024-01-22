@@ -10,11 +10,21 @@ public class Room {
         dragonLeft = 5;
     }
 
-    public boolean getSearched() {
-        return searched;
+    public void dragonKilled() {
+        dragonLeft -= 1;
     }
-    public boolean setSearched() {
 
-
+    public void getSearched() {
+        searched = true;
+        int pot = (int) (Math.random() * 2) + 1;
+        if (pot == 1) {
+            System.out.println("You found an Health Pot!");
+            healthPotPresent = true;
+        }
+        System.out.println("You did not find an Health Pot!");
+        healthPotPresent = false;
+    }
+    public boolean isSearched() {
+        return searched;
     }
 }

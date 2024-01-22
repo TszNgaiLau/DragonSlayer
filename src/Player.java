@@ -1,22 +1,48 @@
 import java.util.Random;
 
 public class Player {
+    private int topScore;
     private int health;
     private int gold;
-    private double highscore;
+    private int highscore;
     private boolean healthPot;
     private Sword sword;
     private Dragon dragon;
 
     public Player() {
+        highscore = 0;
         health = 100;
         gold = 0;
         healthPot = false;
         sword = new Sword();
-        dragon = new Dragon();
     }
-    public Sword getSword() {
-        return sword;
+
+    public int getHighScore() {
+        return highscore;
+    }
+    public int getRemainingDragons(int dragonsLefted) {
+
+    }
+
+    public int calculateHighScore() {
+        int score =+ gold;
+        dragon.
+
+    }
+
+    public void foundHealthPot() {
+        if (!healthPot) {
+            System.out.println("You already found an health pot, and you can only have one a time.");
+        } else {
+            healthPot = true;
+        }
+    }
+
+    public boolean isDead() {
+        if (health == 0) {
+            return true;
+        }
+        return false;
     }
 
     public int attack() {
@@ -46,11 +72,14 @@ public class Player {
             return "You have used the health pot";
         }
         return "You do not have a health pot";
-
     }
 
-    public String playerInfo() {
-        return "Health: " + health + "\nSword|Damage: " + sword.getDamage() + "|Dodge: " + sword.getDodge() + "|";
+    public String getSword() {
+        return "Sword|Damage: " + sword.getDamage() + "|Dodge: " + sword.getDodge() + "|";
+    }
+
+    public String getHealth() {
+        return "Health: " + health;
     }
 
 
