@@ -21,12 +21,15 @@ public class DragonSlayer {
     public void menu() {
         p1 = new Player();
         dragon = new Dragon();
+        currentRoom = new Room();
 
         while(dragonslayed != 5 || !p1.isDead()) {
             if (dragon.isDead()) {
                 dragon = new Dragon();
                 dragonslayed += 1;
                 currentRoom.dragonKilled();
+                p1.getRemainingDragons(currentRoom.getDragonLeft());
+                currentRoom = new Room();
             }
             System.out.println("What would you like to do?");
             System.out.println("(A) Searched for a health Pot");
@@ -46,14 +49,19 @@ public class DragonSlayer {
     public void processChoices(String choice) {
         if (choice.equals("a")) {
             currentRoom.getSearched();
-            p1.foundHealthPot();
+            if (currentRoom.getIsHealthPotPresent()) {
+                p1.foundHealthPot();
+            }
         } else if (choice.equals("b")) {
             System.out.println("You think you can just leave after entering my domain!?");
             System.out.println("If you wish to leave you gotta kill me first!!!");
         } else if (choice.equals("c")) {
             System.out.println(p1.useHealthPot());
         } else if (choice.equals("d")) {
-            dragon.dragonHealth(p1.attack());
+            while (!p1.isDead() || dragon.isDead()) {
+                dragon.dragonHealth(p1.attack());
+                p1.dodge();
+            }
         } else if (choice.equals("e")) {
             System.out.println(dragon.getLevel());
         } else if (choice.equals("f")) {

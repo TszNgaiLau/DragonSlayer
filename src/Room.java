@@ -9,6 +9,9 @@ public class Room {
         searched = false;
         dragonLeft = 5;
     }
+    public int getDragonLeft() {
+        return dragonLeft;
+    }
 
     public void dragonKilled() {
         dragonLeft -= 1;
@@ -20,9 +23,13 @@ public class Room {
         if (pot == 1) {
             System.out.println("You found an Health Pot!");
             healthPotPresent = true;
+        } else {
+            System.out.println("You did not find an Health Pot!");
+            healthPotPresent = false;
         }
-        System.out.println("You did not find an Health Pot!");
-        healthPotPresent = false;
+    }
+    public boolean getIsHealthPotPresent() {
+        return healthPotPresent;
     }
     public boolean isSearched() {
         return searched;
