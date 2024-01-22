@@ -23,13 +23,11 @@ public class DragonSlayer {
         dragon = new Dragon();
         currentRoom = new Room();
 
-        while(dragonslayed != 5 || !p1.isDead()) {
+        while(dragonslayed != 5 && !p1.isDead()) {
             if (dragon.isDead()) {
-                dragon = new Dragon();
                 dragonslayed += 1;
                 currentRoom.dragonKilled();
                 p1.getRemainingDragons(currentRoom.getDragonLeft());
-                currentRoom = new Room();
             }
             System.out.println("What would you like to do?");
             System.out.println("(A) Searched for a health Pot");
@@ -53,14 +51,26 @@ public class DragonSlayer {
                 p1.foundHealthPot();
             }
         } else if (choice.equals("b")) {
-            System.out.println("You think you can just leave after entering my domain!?");
-            System.out.println("If you wish to leave you gotta kill me first!!!");
+            if (!dragon.isDead()) {
+                System.out.println("You think you can just leave after entering my domain!?");
+                System.out.println("If you wish to leave you gotta kill me first!!!");
+            } else {
+                System.out.println("You have left the room and have entered + ");
+                currentRoom = new Room();
+                dragon = new Dragon();
+            }
         } else if (choice.equals("c")) {
             System.out.println(p1.useHealthPot());
         } else if (choice.equals("d")) {
-            while (!p1.isDead() || dragon.isDead()) {
+            while (!p1.isDead() && !dragon.isDead()) {
                 dragon.dragonHealth(p1.attack());
-                p1.dodge();
+                p1.dodge(dragon);
+                System.out.println("Do you wish to use a health pot?(y/n)");
+                String pot = scan.nextLine();
+                System.out.println(p1.getHealth());
+                if (pot.equals("y")) {
+                    System.out.println(p1.useHealthPot());
+                }
             }
         } else if (choice.equals("e")) {
             System.out.println(dragon.getLevel());

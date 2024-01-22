@@ -4,11 +4,16 @@ public class Room {
     private boolean searched;
     private boolean healthPotPresent;
     private int dragonLeft;
+    private int idxRoom;
     public Room() {
         room = new String[]{"Entrance", "Hall", "Storage", "Dungeons", "Throne"};
         searched = false;
         dragonLeft = 5;
     }
+    public void getIdxRoom() {
+        idxRoom = -1;
+    }
+
     public int getDragonLeft() {
         return dragonLeft;
     }

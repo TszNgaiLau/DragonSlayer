@@ -17,7 +17,6 @@ public class Player {
         gold = 0;
         healthPot = false;
         sword = new Sword();
-        dragon = new Dragon();
     }
 
     public int getHighScore() {
@@ -40,7 +39,7 @@ public class Player {
     }
 
     public void foundHealthPot() {
-        if (!healthPot) {
+        if (healthPot) {
             System.out.println("You already found an health pot, and you can only have one a time.");
         } else {
             healthPot = true;
@@ -48,7 +47,7 @@ public class Player {
     }
 
     public boolean isDead() {
-        if (health == 0) {
+        if (health <= 0) {
             return true;
         }
         return false;
@@ -61,22 +60,22 @@ public class Player {
         }
         return sword.getDamage();
     }
-    public void dodge() {
+    public void dodge(Dragon dragon) {
         int dodge = (int) (Math.random() * 10) + 1;
         if (sword.getDodge() > dodge) {
             health -= 0;
             System.out.println("You dodge the attack from the dragon!!!");
         } else if (sword.getDodge() == dodge) {
             if (dragon.dragonAttack() % 2 != 0) {
-                health -= (dragon.dragonAttack() + 1) / 2;
                 System.out.println("You barely dodge the attack and lost " + (dragon.dragonAttack() + 1) / 2 + " health.");
+                health -= (dragon.dragonAttack() + 1) / 2;
             } else {
-                health -= dragon.dragonAttack() / 2;
                 System.out.println("You barely dodge the attack and lost " + dragon.dragonAttack() / 2 + " health.");
+                health -= dragon.dragonAttack() / 2;
             }
         } else {
+            System.out.println("You failed to dodge the attack and lost " + dragon.dragonAttack() + " health.");
             health -= dragon.dragonAttack();
-            System.out.println("You failed to dodge the attack and lost " + dragon.dragonAttack() / 2 + " health.");
         }
     }
 
