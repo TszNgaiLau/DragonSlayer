@@ -6,12 +6,18 @@ public class Room {
     private int dragonLeft;
     private int idxRoom;
     public Room() {
-        room = new String[]{"Entrance", "Hall", "Storage", "Dungeons", "Throne"};
+        room = new String[]{"Hatchery", "Hall", "Storage", "Dungeons", "Throne"};
         searched = false;
         dragonLeft = 5;
-    }
-    public void getIdxRoom() {
         idxRoom = -1;
+    }
+    public void enterNewRoom() {
+        searched = false;
+    }
+
+    public String getIdxRoom() {
+        idxRoom += 1;
+        return room[idxRoom];
     }
 
     public int getDragonLeft() {
