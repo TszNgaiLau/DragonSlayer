@@ -18,7 +18,7 @@ public class DragonSlayer {
         System.out.println("Your goal in this game is to kill five dragons!!");
         System.out.println("Isn't this exciting!!!");
     }
-
+//This would allow the whole program to function. It would make a new player and room everytime a is chosen. It would only end if the player decides to input c.
     public void menu() {
         dragon = new Dragon();
         String option2 = "";
@@ -58,6 +58,7 @@ public class DragonSlayer {
         }
 
     }
+    //This takes in the choices that was chosen in the menu method.
 
     public void processChoices(String choice) {
         if (choice.equals("a")) {
@@ -87,6 +88,7 @@ public class DragonSlayer {
         } else if (choice.equals("c")) {
             System.out.println(p1.useHealthPot());
         } else if (choice.equals("d")) {
+            //This checks if the dragon is dead, and if it is the battle would end. The player would not be damage as long as the dragon die.
             if (!dragon.isDead()) {
                 while (!p1.isDead() && !dragon.isDead()) {
                     dragon.dragonHealth(p1.attack());

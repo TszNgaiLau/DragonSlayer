@@ -41,6 +41,7 @@ public class Player {
         }
 
     }
+    // The amount of health is based on the level of the dragon that was fought.
     public String gainHealth(int level) {
         double gain = 100 - health;
         if (health != 100) {
@@ -85,7 +86,6 @@ public class Player {
     }
 
 
-
     public int attack() {
         int crit = (int) (Math.random() * 3) + 1;
         if (crit == 1) {
@@ -93,6 +93,8 @@ public class Player {
         }
         return sword.getDamage();
     }
+
+    //This would decide if the player has dodge the attack. The parameter would be set in the dragonSlayer class. This way it knows what level the dragon is, and would in turn allow for the correct amount of damage to be done.
     public void dodge(Dragon dragon) {
         int dodge = (int) (Math.random() * 10) + 1;
         if (sword.getDodge() > dodge) {

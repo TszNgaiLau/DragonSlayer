@@ -33,7 +33,7 @@ public class Room {
     public void dragonKilled() {
         dragonLeft -= 1;
     }
-
+// Allows the program to know if the room was check and if they found anything in the current room.
     public void getSearched() {
         searched = true;
         int pot = (int) (Math.random() * 2) + 1;
