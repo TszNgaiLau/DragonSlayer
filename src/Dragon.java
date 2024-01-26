@@ -21,6 +21,12 @@ public class Dragon {
     public int dragonAttack() {
         return damage;
     }
+    public boolean isDead() {
+        if (health <= 0) {
+            return true;
+        }
+        return false;
+    }
 
     public void dragonHealth(int damage) {
         health -= damage;
@@ -29,15 +35,9 @@ public class Dragon {
         } else {
             System.out.println("You attack the dragon for " + damage + " health. It has " + health + " remaining");
         }
-
     }
 
-    public boolean isDead() {
-        if (health <= 0) {
-            return true;
-        }
-        return false;
-    }
+
 
 
 

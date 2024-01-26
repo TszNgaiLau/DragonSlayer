@@ -24,6 +24,12 @@ public class Room {
         return dragonLeft;
     }
 
+    public boolean getIsHealthPotPresent() {
+        return healthPotPresent;
+    }
+    public boolean isSearched() {
+        return searched;
+    }
     public void dragonKilled() {
         dragonLeft -= 1;
     }
@@ -39,10 +45,5 @@ public class Room {
             healthPotPresent = false;
         }
     }
-    public boolean getIsHealthPotPresent() {
-        return healthPotPresent;
-    }
-    public boolean isSearched() {
-        return searched;
-    }
+
 }

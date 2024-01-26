@@ -2,7 +2,7 @@ import java.sql.SQLOutput;
 import java.util.Random;
 
 public class Player {
-    private int topScore;
+
     private double health;
     private int gold;
     private int highscore;
@@ -17,6 +17,15 @@ public class Player {
         gold = 0;
         healthPot = false;
         sword = new Sword();
+    }
+    public Sword swordStat() {
+        return sword;
+    }
+    public boolean isDead() {
+        if (health <= 0) {
+            return true;
+        }
+        return false;
     }
 
     public String setGold(int level) {
@@ -34,38 +43,37 @@ public class Player {
     }
     public String gainHealth(int level) {
         double gain = 100 - health;
-        if (level == 3) {
-            health += gain / 2;
-            return "You got " + (gain / 2) + " health back.";
-        } else if (level == 2) {
-            health += gain / 4;
-            return "You got " + (gain / 4) + " health back.";
+        if (health != 100) {
+            if (level == 3) {
+                health += gain / 2;
+                return "You got " + (gain / 2) + " health back.";
+            } else if (level == 2) {
+                health += gain / 4;
+                return "You got " + (gain / 4) + " health back.";
+            } else {
+                health += gain / 8;
+                return "You got " + (gain / 8) + " health back.";
+            }
         } else {
-            health += gain / 8;
-            return "You got " + (gain / 8) + " health back.";
+            return "You were supposed to gain health back, but you seem to have full health.";
         }
-    }
-    public Sword swordStat() {
-        return sword;
+
     }
 
-    public String getHighScore() {
-        return "High Score: " + highscore;
-    }
+
     public void getRemainingDragons(int dragonsLefted) {
-        dragonLeft = dragonsLefted;
-        dragonLeft = 5 - dragonLeft;
+        dragonLeft = 5 - dragonsLefted;
     }
 
-    public void calculateHighScore() {
-        int score = 0;
-        score += gold;
-        if (dragonLeft == 0) {
-            score *= dragonLeft;
+    public int calculateHighScore() {
+        int score = gold;
+        if (dragonLeft != 0) {
+            score = 50 * dragonLeft;
         }
         if (score > highscore) {
             highscore = score;
         }
+        return highscore;
     }
 
     public void foundHealthPot() {
@@ -76,12 +84,7 @@ public class Player {
         }
     }
 
-    public boolean isDead() {
-        if (health <= 0) {
-            return true;
-        }
-        return false;
-    }
+
 
     public int attack() {
         int crit = (int) (Math.random() * 3) + 1;
@@ -96,15 +99,15 @@ public class Player {
             System.out.println("You dodge the attack from the dragon!!!");
         } else if (sword.getDodge() == dodge) {
             if (dragon.dragonAttack() % 2 != 0) {
-                System.out.println("You barely dodge the attack and lost " + (dragon.dragonAttack() + 1) / 2 + " health.");
                 health -= (double) (dragon.dragonAttack() + 1) / 2 - 1;
+                System.out.println("You barely dodge the attack and lost " + (dragon.dragonAttack() + 1) / 2 + " health. You have " + health + " remaining.");
             } else {
-                System.out.println("You barely dodge the attack and lost " + dragon.dragonAttack() / 2 + " health.");
                 health -= (double) dragon.dragonAttack() / 2;
+                System.out.println("You barely dodge the attack and lost " + dragon.dragonAttack() / 2 + " health. You have " + health + " remaining.");
             }
         } else {
-            System.out.println("You failed to dodge the attack and lost " + dragon.dragonAttack() + " health.");
             health -= dragon.dragonAttack();
+            System.out.println("You failed to dodge the attack and lost " + dragon.dragonAttack() + " health. You have " + health + " remaining.");
         }
     }
 
